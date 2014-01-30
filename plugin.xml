@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="se.sharemyworld.plugins.android.inappbilling"
+        version="1.0">
+
+    <name>SmwAndroidInAppBilling</name>
+
+    <description>
+        In app billing plugin for Android.
+    </description>
+
+    <license>MIT</license>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+
+
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="InAppBilling">
+                <param name="android-package" value="se.sharemyworld.plugins.inappbilling.InAppBilling" />
+            </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="com.android.vending.BILLING" />
+        </config-file>
+
+        <source-file src="src/android/se/sharemyworld/plugins/inappbilling/InAppBilling.java" target-dir="src/se/sharemyworld/plugins/inappbilling"/>
+        <source-file src="src/android/com/android/vending/billing/IInAppBillingService.aidl" target-dir="src/com/android/vending/billing/"/>
+    </platform>
+</plugin>
